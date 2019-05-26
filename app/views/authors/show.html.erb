@@ -1,0 +1,28 @@
+<h1>Author Details</h1>
+
+<p>
+  <%= link_to "Return to Authors List", authors_path %>
+</p>
+
+<h4>
+  <%= @author.name %>
+</h4>
+
+<p>
+  Age: <%= @author.age %>
+</p>
+
+<strong>Books</strong>
+<% unless @author.books.empty? %>
+  <ul>
+    <% @author.books.each do |book| %>
+      <li>
+        <%= book.title %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul>
+    <li>No Books for this author</li>
+  </ul>
+<% end %>

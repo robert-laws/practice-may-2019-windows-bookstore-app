@@ -1,0 +1,20 @@
+<h1>Public Page</h1>
+
+<% @content = [{type: "text", content: "hello everyone..."}, {type: "HTML", content: "<strong>Important text:</strong> <em>read this text</em>"}, {type: "text", content: "More information is available on request"}, {type: "HTML", content: "<a href='https://www.google.com'>Search for more info</a>"}] %>
+
+<h4>Page for - <%= params[:permalink] ||= "no permalink" %></h4>
+
+<ul>
+  <% @content.each do |content| %>
+    <% case content[:type] %>
+    <% when 'HTML' %>
+      <li>
+        <%= raw(sanitize(content[:content], tags: ['strong', 'em', 'a'])) %>
+      </li>
+    <% when 'text' %>
+      <li>
+        <%= simple_format(content[:content]) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
