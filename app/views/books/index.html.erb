@@ -1,0 +1,21 @@
+<h1>All Books</h1>
+
+<h4>Books List<%= " for #{@author.name}" unless @author.nil? %></h4>
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <% unless @author.nil? %>
+        <%= link_to book.title, book_path(book, author_id: @author.id) %>
+      <% else %>
+        <%= link_to book.title, book_path(book) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless @author.nil? %>
+  <p>
+    <%= link_to "Return to Author Page for #{@author.name}", author_path(@author.id) %>
+  </p>
+<% end %>

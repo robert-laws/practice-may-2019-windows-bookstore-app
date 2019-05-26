@@ -1,0 +1,18 @@
+<h1>Book Details</h1>
+
+<h4>
+  Title: <%= @book.title %>
+</h4>
+<p>
+  Publication Year: <%= @book.year %>
+</p>
+
+<% unless @author.nil? %>
+  <p>
+    <%= link_to "Back to Books Page for #{@author.name}", books_path(author_id: @author.id) %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Back to Books List", books_path %>
+  </p>
+<% end %>

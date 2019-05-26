@@ -1,0 +1,11 @@
+<%= f.label :title %>
+<%= f.text_field(:title) %>
+<br>
+<%= f.label :year %>
+<%= f.select :year, 1990..2019 %>
+<br>
+<%= f.label :author_id %>
+<%#= f.text_field(:author_id) %>
+<%= f.select :author_id, @authors.map {|a| [a.name, a.id]}, { prompt: "Select an Author" } %>
+<br>
+<%= f.submit submit_text %>

@@ -1,0 +1,7 @@
+<% @page_title = "New Book" %>
+
+<h1>Add New Book</h1>
+
+<%= form_for(@book) do |f| %>
+  <%= render partial: "form", locals: { f: f, submit_text: "Create Book" } %>
+<% end %>

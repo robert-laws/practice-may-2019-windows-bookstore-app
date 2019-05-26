@@ -12,7 +12,7 @@
   Age: <%= @author.age %>
 </p>
 
-<strong>Books</strong>
+<strong>Books</strong><%= " - #{pluralize(@author.books.size, 'book')}" unless @author.books.empty? %>
 <% unless @author.books.empty? %>
   <ul>
     <% @author.books.each do |book| %>
@@ -25,4 +25,10 @@
   <ul>
     <li>No Books for this author</li>
   </ul>
+<% end %>
+
+<% unless @author.books.empty? %>
+  <p>
+    <%= link_to "View Books from this Author", books_path(author_id: @author.id) %>
+  </p>
 <% end %>
