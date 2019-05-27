@@ -1,24 +1,16 @@
-# README
+# Practice - Ruby on Rails - Bookstore App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Windows based, May 2019
 
-Things you may want to cover:
+### Using a Custom Setter Method for a Model
 
-* Ruby version
+The genre attribute has whitespace removed and is changed to be downcase.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+class BookGenre < ApplicationRecord
+  def genre=(value)
+    result = value.strip.downcase
+    super(result)
+  end
+end
+```
