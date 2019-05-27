@@ -15,6 +15,13 @@ class BookGenresController < ApplicationController
 
   def create
     @book_genre = BookGenre.new(book_genre_params)
+
+    if @book_genre.save
+      flash[:notice] = "success|New Book Genre has been successfully added to the database."
+      redirect_to book_genres_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,6 +30,13 @@ class BookGenresController < ApplicationController
 
   def update
     @book_genre = BookGenre.find(params[:id])
+
+    if @book_genre.update_attributes(book_genre_params)
+      flash[:notice] = "success|The Book Genre has been successfully updated."
+      redirect_to book_genre_path(@book_genre)
+    else
+      render :edit
+    end
   end
 
   def delete

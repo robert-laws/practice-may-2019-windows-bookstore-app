@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   
   resources :books, only: [:index, :show, :new, :create]
   
-  resources :book_genres, only: [:index, :show, :new]
+  resources :book_genres, only: [:index, :show, :new, :create, :edit, :update]
 end

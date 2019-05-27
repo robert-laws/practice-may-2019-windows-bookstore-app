@@ -1,2 +1,24 @@
-<h1>BookGenres#new</h1>
-<p>Find me in app/views/book_genres/new.html.erb</p>
+<div class="row mt-4">
+  <div class="col">
+    <h1>Add New Book Genre</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row pl-3">
+  <div class="col">
+    <%= form_for @book_genre do |f| %>
+      <div class="form-group">
+        <%= f.label :genre %>
+        <%= f.text_field :genre, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Create a New Book Genre", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
