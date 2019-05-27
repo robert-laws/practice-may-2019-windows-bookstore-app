@@ -1,34 +1,71 @@
-<h1>Author Details</h1>
+<div class="row mt-4">
+  <div class="col">
+    <h1>Author Details</h1>
+  </div>
+</div>
 
-<p>
-  <%= link_to "Return to Authors List", authors_path %>
-</p>
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
 
-<h4>
-  <%= @author.name %>
-</h4>
+<div class="row pl-3">
+  <div class="col">
+    <p>
+      <%= link_to "<< Return to Authors List", authors_path %>
+    </p>
+  </div>
+</div>
 
-<p>
-  Age: <%= @author.age %>
-</p>
+<div class="row mt-n3">
+  <div class="col">
+    <hr>
+  </div>
+</div>
 
-<strong>Books</strong><%= " - #{pluralize(@author.books.size, 'book')}" unless @author.books.empty? %>
-<% unless @author.books.empty? %>
-  <ul>
-    <% @author.books.each do |book| %>
-      <li>
-        <%= book.title %>
-      </li>
+<div class="row mt-2">
+  <div class="col">
+    <h4>
+      <%= @author.name %>
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <p>
+      Born: <%= @author.birth_year %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <strong>Books</strong><%= " - #{pluralize(@author.books.size, 'book')}" unless @author.books.empty? %>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <% unless @author.books.empty? %>
+      <ul>
+        <% @author.books.each do |book| %>
+          <li>
+            <%= book.title %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <ul>
+        <li>No Books for this author</li>
+      </ul>
     <% end %>
-  </ul>
-<% else %>
-  <ul>
-    <li>No Books for this author</li>
-  </ul>
-<% end %>
 
-<% unless @author.books.empty? %>
-  <p>
-    <%= link_to "View Books from this Author", books_path(author_id: @author.id) %>
-  </p>
-<% end %>
+    <% unless @author.books.empty? %>
+      <p>
+        <%= link_to "View Books from this Author", books_path(author_id: @author.id) %>
+      </p>
+    <% end %>
+  </div>
+</div>

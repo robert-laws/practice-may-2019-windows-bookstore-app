@@ -1,9 +1,17 @@
-<h1>All Authors</h1>
+<div class="row mt-4">
+  <div class="col">
+    <h1>All Authors</h1>
+  </div>
+</div>
 
-<ul>
-  <% @authors.each do |author| %>
-    <li>
-      <%= link_to author.name, author_path(author) %>
-    </li>
-  <% end %>
-</ul>
+<div class="row mt-3">
+    <div class="col">
+    <ul>
+      <% @authors.each do |author| %>
+        <li>
+          <%= link_to author.name, author_path(author) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

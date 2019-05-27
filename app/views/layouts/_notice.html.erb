@@ -1,0 +1,16 @@
+<% if !flash[:notice].blank? %>
+  <% full_flash = flash[:notice].split("|") %>
+  <% if full_flash[0] == "danger" %>
+    <div class="alert alert-danger" role="alert">
+      <%= full_flash[1] %>
+    </div>
+  <% elsif full_flash[0] == "success" %>
+    <div class="alert alert-success" role="alert">
+      <%= full_flash[1] %>
+    </div>
+  <% else %>
+    <div class="alert alert-primary" role="alert">
+      <%= full_flash[1] %>
+    </div>
+  <% end %>
+<% end %>
