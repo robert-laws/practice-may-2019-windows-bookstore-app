@@ -13,12 +13,7 @@
 <div class="row pl-3">
   <div class="col">
     <%= form_for @book_genre do |f| %>
-      <div class="form-group">
-        <%= f.label :genre %>
-        <%= f.text_field :genre, class: "form-control" %>
-      </div>
-
-      <%= f.submit "Update Book Genre", class: "btn btn-primary" %>
+      <%= render partial: "form", locals: { f: f, submit_text: "Update Book Genre"} %>
     <% end %>
   </div>
 </div>
