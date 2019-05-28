@@ -9,7 +9,7 @@
     <ul>
       <% @book_genres.each do |book_genre| %>
         <li>
-          <%= link_to book_genre.genre.capitalize, book_genre_path(book_genre) %>
+          <%= link_to book_genre.all_capitalize_genre, book_genre_path(book_genre) %>
         </li>
       <% end %>
     </ul>

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  layout 'public'
+  layout 'application'
 
   before_action :find_author
 

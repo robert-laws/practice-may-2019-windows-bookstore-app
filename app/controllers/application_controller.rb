@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def setup_navigation
-    @authors_list = Author.sorted
+    @nav_list = {"Authors" => "authors", "Books" => "books", "Book Genres" => "book_genres"}
   end
 end

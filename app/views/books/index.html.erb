@@ -1,21 +1,33 @@
-<h1>All Books</h1>
+<div class="row mt-4">
+  <div class="col">
+    <h1>All Books</h1>
+  </div>
+</div>
 
-<h4>Books List<%= " for #{@author.name}" unless @author.nil? %></h4>
-
-<ul>
-  <% @books.each do |book| %>
-    <li>
-      <% unless @author.nil? %>
-        <%= link_to book.title, book_path(book, author_id: @author.id) %>
-      <% else %>
-        <%= link_to book.title, book_path(book) %>
+<div class="row mt-2">
+  <div class="col">
+    <ul>
+      <% @books.each do |book| %>
+        <li>
+          <% unless @author.nil? %>
+            <%= link_to book.title, book_path(book, author_id: @author.id) %>
+          <% else %>
+            <%= link_to book.title, book_path(book) %>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>
 
-<% unless @author.nil? %>
-  <p>
-    <%= link_to "Return to Author Page for #{@author.name}", author_path(@author.id) %>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <%= link_to "+ Add a New Book", new_book_path %>
+  </div>
+</div>

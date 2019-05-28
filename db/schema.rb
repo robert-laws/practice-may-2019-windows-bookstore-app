@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_081528) do
+ActiveRecord::Schema.define(version: 2019_05_28_113613) do
+
+  create_table "author_conventions", force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "convention_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_author_conventions_on_author_id"
+    t.index ["convention_id"], name: "index_author_conventions_on_convention_id"
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name", limit: 25
@@ -32,7 +41,15 @@ ActiveRecord::Schema.define(version: 2019_05_27_081528) do
     t.text "description"
     t.float "price"
     t.integer "author_id"
-    t.integer "book_type_id"
+    t.integer "book_genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conventions", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.date "event_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

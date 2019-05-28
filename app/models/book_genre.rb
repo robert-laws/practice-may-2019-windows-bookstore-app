@@ -5,10 +5,14 @@ class BookGenre < ApplicationRecord
 
   has_many :books
 
+  scope :sorted, -> { order(genre: :asc) }
+
   def genre=(value)
     result = value.strip.downcase
     super(result)
   end
 
-  scope :sorted, -> { order(genre: :asc) }
+  def all_capitalize_genre
+    self.genre.split(" ").map{|s| s.capitalize}.join(" ")
+  end
 end

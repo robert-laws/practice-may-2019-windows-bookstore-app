@@ -1,7 +1,7 @@
-<% @authors_list ||= [] %>
+<% @nav_list ||= [] %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
-  <a class="navbar-brand" href="/">Navbar</a>
+  <a class="navbar-brand" href="/">Bookstore App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,12 +9,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/"><%= controller.controller_name %> || <%= controller.action_name %><span class="sr-only">(current)</span></a>
       </li>
       
-      <% @authors_list.each do |author| %>
+      <% @nav_list.each do |link_name, controller| %>
         <li class="nav-item">
-          <%= link_to author.name, author_path(author.id), class: 'nav-link' %>
+          <%= link_to link_name, { controller: controller }, id: "#{controller}-nav-link", class: 'nav-link' %>
         </li>
       <% end %>
       

@@ -1,18 +1,71 @@
-<h1>Book Details</h1>
+<div class="row mt-4">
+  <div class="col">
+    <h1>Book Details</h1>
+  </div>
+</div>
 
-<h4>
-  Title: <%= @book.title %>
-</h4>
-<p>
-  Publication Year: <%= @book.year %>
-</p>
+<div class="row mt-2">
+  <div class="col">
+    <h4>
+      Title: <%= @book.title %>
+    </h4>
+  </div>
+</div>
 
-<% unless @author.nil? %>
-  <p>
-    <%= link_to "Back to Books Page for #{@author.name}", books_path(author_id: @author.id) %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to "Back to Books List", books_path %>
-  </p>
-<% end %>
+<div class="row mt-2">
+  <div class="col">
+    <p>
+      Author: <%= @book.author.name %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <p>
+      Genre: <%= @book.book_genre.genre %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <p>
+      Description: <%= @book.description %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <p>
+      Publication Year: <%= @book.publication_year %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <p>
+      Price: <%= number_to_currency(@book.price, precision: 2) %>
+    </p>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col">
+    <%= link_to "Edit this Book", edit_book_path(@book) %>
+  </div>
+</div>
