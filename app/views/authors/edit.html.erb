@@ -1,0 +1,13 @@
+<div class="row mt-4">
+  <div class="col">
+    <h1>Edit Author</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= form_for @author do |f| %>
+      <%= render partial: "form", locals: { f: f, submit_text: "Update Author" } %>
+    <% end %>
+  </div>
+</div>

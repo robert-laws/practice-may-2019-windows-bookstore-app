@@ -1,5 +1,8 @@
-# Author, Book, BookType, Address
+# Database Tables - Authors, Books, BookGenres, Shops, BookShops, Addresses
+Address.delete_all
+BookShop.delete_all
 Book.delete_all
+Shop.delete_all
 BookGenre.delete_all
 Author.delete_all
 
@@ -24,12 +27,33 @@ authors = [
   {first_name: "Don", last_name: "Dome", birth_year: 1989}
 ]
 
+addresses = [
+  {street_1: "550 Water Street", city: "Pittsburgh", state: "PA", zip_code: 15202},
+  {street_1: "400 Mountain View Road", city: "Reno", state: "NV", zip_code: 89510},
+  {street_1: "1102 New Street", street_2: "Apartment 2A", city: "Baltimore", state: "MD", zip_code: 21211},
+  {street_1: "72 Main Street", city: "Wichita", state: "KS", zip_code: 67201},
+  {street_1: "5 Bayside Lane", city: "Atlanta", state: "GA", zip_code: 30301},
+  {street_1: "112 Wayne Road", street_2: "Apartment 14", city: "Nashville", state: "TN", zip_code: 37201},
+  {street_1: "90 Old Fountain Road", city: "Tulsa", state: "OK", zip_code: 74101},
+  {street_1: "73 Tall Tree Lane", city: "Santa Fe", state: "NM", zip_code: 87506},
+  {street_1: "22 Second Street", street_2: "Apartment 2B", city: "Los Angeles", state: "CA", zip_code: 90089},
+  {street_1: "22 Avery Road", city: "Chicago", state: "IL", zip_code: 60641}
+]
+
 book_genres.each do |genre|
   BookGenre.create(genre)
 end
 
 authors.each do |author|
   Author.create(author)
+end
+
+all_authors = Author.all
+
+addresses.each_with_index do |address, index|
+  a = Address.new(address)
+  a.author = all_authors[index]
+  a.save
 end
 
 books = [
@@ -54,7 +78,7 @@ books = [
   {title: "Pleasures of the Pancake", publication_year: 2015, description: "interesting reflection on issues of the day", price: 7.75},
   {title: "Hello to the Animals", publication_year: 1996, description: "interesting title", price: 15.50},
   {title: "Park Visitors from Mars", publication_year: 1989, description: "Important new addition to the topic", price: 22.00},
-  {title: "Resting on the Couch at Noon", publication_year: 2019, description: "Insightful reflection of issues important to all of us", price: 16.85},
+  {title: "Resting on the Couch at Noon", publication_year: 2019, description: "Insightful reflection of issues for all of us", price: 16.85},
   {title: "Jealous of the Hat Man", publication_year: 2014, description: "interesting reflection on issues of the day", price: 28.50},
   {title: "Inside the Doorway", publication_year: 2006, description: "Important new addition to the topic", price: 19.95},
   {title: "Fanatical Phantoms", publication_year: 2009, description: "interesting title", price: 23.95}
@@ -80,4 +104,32 @@ books.each do |book|
   b.author = a
   b.book_genre = g
   b.save
+end
+
+shops = [
+  {name: "Book Times and Cookies", capacity: 2500, open_date: DateTime.new(2015,5,28), city: "Houston", state: "TX"},
+  {name: "Reading Lair", capacity: 1200, open_date: DateTime.new(1997,10,12), city: "Denver", state: "CO"},
+  {name: "Story Nook and Coffee", capacity: 3300, open_date: DateTime.new(2010,2,17), city: "Jacksonville", state: "FL"},
+  {name: "Information World", capacity: 7500, open_date: DateTime.new(2004,9,10), city: "Boston", state: "MA"},
+  {name: "Page Turners", capacity: 2000, open_date: DateTime.new(2013,11,14), city: "Los Angeles", state: "CA"},
+  {name: "Bookmarks and Bagels", capacity: 3000, open_date: DateTime.new(1999,12,1), city: "Boise", state: "ID"}
+]
+
+shops.each do |shop|
+  Shop.create(shop)
+end
+
+book_objects = Book.all
+
+book_objects.each do |book|
+  shops = Shop.all
+  shops_count = shops.size
+  number = (1..shops_count).to_a.sample
+
+  while number > 0
+    shop_number = (1..shops_count).to_a.sample
+    bs = BookShop.new(book: book, shop: shops[shop_number - 1])
+    bs.save
+    number -= 1
+  end
 end

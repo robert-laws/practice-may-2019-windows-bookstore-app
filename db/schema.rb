@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_113613) do
+ActiveRecord::Schema.define(version: 2019_05_29_075509) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street_1", limit: 25
+    t.string "street_2", limit: 25
+    t.string "city", limit: 25
+    t.string "state", limit: 2
+    t.integer "zip_code", limit: 5
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_addresses_on_author_id"
+  end
 
   create_table "author_conventions", force: :cascade do |t|
     t.integer "author_id"
@@ -35,6 +47,15 @@ ActiveRecord::Schema.define(version: 2019_05_28_113613) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "book_shops", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_shops_on_book_id"
+    t.index ["shop_id"], name: "index_book_shops_on_shop_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title", limit: 50
     t.integer "publication_year", limit: 4
@@ -50,6 +71,16 @@ ActiveRecord::Schema.define(version: 2019_05_28_113613) do
     t.string "name"
     t.string "location"
     t.date "event_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name", limit: 25
+    t.integer "capacity", limit: 6
+    t.datetime "open_date"
+    t.string "city", limit: 25
+    t.string "state", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

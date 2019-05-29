@@ -1,0 +1,13 @@
+<div class="row mt-4">
+  <div class="col">
+    <h1>Add a New Author</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= form_for @author do |f| %>
+      <%= render partial: "form", locals: { f: f, submit_text: "Create a New Author" } %>
+    <% end %>
+  </div>
+</div>

@@ -42,7 +42,7 @@
 
 <div class="row mt-2">
   <div class="col">
-    <strong>Books</strong><%= " - #{pluralize(@author.books.size, 'book')}" unless @author.books.empty? %>
+    <h4><%= "#{pluralize(@author.books.size, 'Title')}" unless @author.books.empty? %></h4>
   </div>
 </div>
 
@@ -67,5 +67,17 @@
         <%= link_to "View Books from this Author", books_path(author_id: @author.id) %>
       </p>
     <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= link_to "Edit Author", edit_author_path(@author) %>
   </div>
 </div>
